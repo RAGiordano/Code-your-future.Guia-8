@@ -72,4 +72,6 @@ public class Operacion {
             return (double) numero1 / (double) numero2;
         }
     }
+    
+    
 }
