@@ -26,6 +26,11 @@ public class MainEj2 {
         
         System.out.println("Área de la circunferencia: " + circunf1.area());
         System.out.println("Perímetro de la circunferencia: " + circunf1.perimetro());
+        
+        circunf1.crearCircunferencia();
+        System.out.println("Área de la circunferencia: " + circunf1.area());
+        System.out.println("Perímetro de la circunferencia: " + circunf1.perimetro());
+        
     }
     
 }
