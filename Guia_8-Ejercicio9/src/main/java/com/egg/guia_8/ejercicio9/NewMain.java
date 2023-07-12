@@ -10,7 +10,7 @@ import Servicios.MatematicaService;
  *
  * @author Usuario
  */
-public class Main9 {
+public class NewMain {
 
     /**
      * @param args the command line arguments
