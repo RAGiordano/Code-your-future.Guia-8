@@ -44,11 +44,27 @@ public class DiscountCalculatorTest {
     @Test
     public void testCalculoDescuento() throws Exception {
     System.out.println("Cálculo descuento");
-    DiscountCalculator calculo = new DiscountCalculator (100, 20);
-    double expResult = 80;
+    DiscountCalculator calculo = new DiscountCalculator (100, 10);
+    double expResult = 90;
     double result = calculo.getResultado();
-    assertEquals(expResult, result, 0.000001);
-        
+    assertEquals(expResult, result, 0.0);
+    
+    DiscountCalculator calculo2 = new DiscountCalculator (100, 0);
+    expResult = 100;
+    result = calculo2.getResultado();
+    assertEquals(expResult, result, 0.0);
+    
+    DiscountCalculator calculo3 = new DiscountCalculator (100, 100);
+    expResult = 0;
+    result = calculo3.getResultado();
+    assertEquals(expResult, result, 0.0);
+    
+    DiscountCalculator calculo4 = new DiscountCalculator (100, -10);
+    expResult = 110;
+    result = calculo4.getResultado();
+    assertEquals(expResult, result, 0.0);
     }
+    
+
     
 }
