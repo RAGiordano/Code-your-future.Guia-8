@@ -10,4 +10,16 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <dependencies>
+        <!-- Otras dependencias del proyecto -->
+
+        <!-- Dependencia de JUnit Jupiter -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version> <!-- Puedes usar una versión más reciente si está disponible -->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 </project>
