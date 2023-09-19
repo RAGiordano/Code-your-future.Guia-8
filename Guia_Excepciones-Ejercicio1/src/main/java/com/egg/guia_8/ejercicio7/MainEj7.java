@@ -34,7 +34,7 @@ public class MainEj7 {
                 System.out.println("Es menor de edad");
             }
         } catch (NullPointerException e){
-            System.out.println(e.getMessage());
+            System.out.println("El objeto tiene un valor nulo");
         } catch (Exception e){
             System.out.println("Error");
         }

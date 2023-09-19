@@ -103,16 +103,11 @@ public class Persona {
     }
     
     public boolean esMayorDeEdad() {
-        try {
-            if (edad >= 21) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (NullPointerException e){
-            System.out.println(e.getMessage());
+        if (edad >= 21) {
+            return true;
+        } else {
+            return false;
         }
-        
     }
 
 }
