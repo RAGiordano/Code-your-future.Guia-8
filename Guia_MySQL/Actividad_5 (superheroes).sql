@@ -22,6 +22,8 @@ CREATE TABLE personajes (
   FOREIGN KEY (id_creador) REFERENCES creador(id_creador)
   );
 
+-- ACTIVIDAD 5 -----------------------------------
+
 INSERT INTO creador (nombre) VALUES ('Marvel');
 INSERT INTO creador (nombre) VALUES ('DC Comics');
 
@@ -61,3 +63,10 @@ WHERE id_personaje = 12 AND personaje = 'Superman';
 
 DELETE FROM personajes
 WHERE id_personaje = 10 AND personaje = 'Flash';
+
+-- ACTIVIDAD 6 -----------------------------------
+SELECT nombre_real FROM personajes;
+SELECT nombre_real FROM personajes WHERE nombre_real LIKE 'B%';
+
+-- ACTIVIDAD 7 -----------------------------------
+SELECT * FROM personajes ORDER BY inteligencia DESC;
