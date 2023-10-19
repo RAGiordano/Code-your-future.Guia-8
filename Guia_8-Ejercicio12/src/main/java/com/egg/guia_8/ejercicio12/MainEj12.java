@@ -4,6 +4,7 @@
  */
 package com.egg.guia_8.ejercicio12;
 
+import Entidades.Persona;
 import Servicios.PersonaService;
 
 /**
@@ -16,6 +17,19 @@ public class MainEj12 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Persona p1 = new Persona();
+        String nombre = null;
+        
+        try {
+            if (!nombre.equals(null)) {
+                p1.setNombre(nombre);
+            }
+        } catch (Exception e) {
+            System.out.println("El nombre no puede ser nulo");
+        }
+        
+        System.out.println("-- FIN --");
+        
         PersonaService personaS = new PersonaService();
         
         personaS.crearPersona();
