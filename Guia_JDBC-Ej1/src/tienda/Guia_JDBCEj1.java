@@ -44,6 +44,7 @@ public class Guia_JDBCEj1 {
             
             switch (option) {
                 case "a":
+                    
                     listarNombresProductos();
                     System.out.println("");
                     System.out.println("Presione <ENTER> para continuar");
