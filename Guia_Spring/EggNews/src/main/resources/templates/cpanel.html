@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel - Egg News</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <!-- Agrega tu archivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Nav bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Menu -->
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Log in</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="cpanel">Control Panel</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main logo, main title and slogan -->
+<div class="main-title__container__container">
+    <div class="container main-title__container">
+        <div class="row">
+            <div class="col-md-2 col-sm-3 sm-center">
+                <!-- Main logo -->
+                <img src="img/Egg_picture.svg" alt="Logo" class="img-fluid main-logo" width="80" height="80">
+            </div>
+            <div class="col-md-10 col-sm-9">
+                <h1 class="display-3 text__white main-title sm-center">Egg News</h1>
+                <h2 class="subtitle text__white main-subtitle sm-center">The newspaper with the eggs to tell the truth</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contenido principal del Panel de Control -->
+<div class="container mt-3">
+    <!-- Botón para agregar noticia -->
+    <div class="text-left mx-auto mb-3 btn-add-news">
+        <a th:href="@{/uploadNewsForm}" class="btn btn-success">Add news</a>
+    </div>
+
+    <!-- Lista de noticias con botones de eliminar y modificar -->
+    <div th:if="${not #lists.isEmpty(news)}">
+        <div th:each="newsItem : ${news}" class="row mb-4">
+            <div class="col-md-3 list-picture__container">
+                <!-- Imagen de la noticia -->
+                <img th:src="${newsItem.picture}" alt="News Image" class="img-fluid list-picture">
+            </div>
+            <div class="col-md-6">
+                <h3 th:text="${newsItem.title}" class="font-weight-bold">News Title</h3>
+                <p th:text="${newsItem.summary}">News Summary</p>
+            </div>
+            <div class="col-md-3">
+                <div class="btn-group" role="group" aria-label="Botones de Acción">
+                    <!-- Botones de eliminar y modificar -->
+                    <form th:action="@{'/deleteNews/' + ${newsItem.id}}" method="delete" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta noticia?');">
+                        <input type="hidden" name="_method" th:value="DELETE" />
+                        <button type="submit" class="btn btn-dark btn-sm mx-2"><i class="fas fa-trash"></i> Delete</button>
+                    </form>
+                    <a th:href="@{'/editNewsForm/' + ${newsItem.id}}" class="btn btn-dark btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje si no hay noticias disponibles -->
+    <div th:if="${#lists.isEmpty(news)}">
+        <p>No hay noticias disponibles en este momento.</p>
+    </div>
+</div>
+
+<!-- Scripts de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
