@@ -1,22 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.rag.EggNews.controllers;
 
 import com.rag.EggNews.entities.News;
+import com.rag.EggNews.exceptions.MyException;
 import com.rag.EggNews.services.NewsService;
-import java.util.Collections;
+import com.rag.EggNews.services.SystemUserService;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -34,6 +32,42 @@ public class NewsController {
     
     @Autowired
     private NewsService newsService;
+
+    @Autowired
+    private SystemUserService systemUserService;
+    
+     // ------------------------ REGISTER USER ------------------------
+    @GetMapping("/register")
+    public String register() {
+        return "register.html";
+    }
+    
+    @PostMapping("/register")
+    public String register( @RequestParam String email,
+                            @RequestParam String password,
+                            @RequestParam String password2,
+                            ModelMap model) {
+        try {
+            systemUserService.register(email, password, password2);
+            model.put("success", "Registration successful");
+            return "redirect:index.html";
+        } catch (MyException e) {
+            //Logger.getLogger(NewsController.class.getName()).log(Level.SEVERE, null, e);
+            model.put("error", e.getMessage());
+            //model.put("error", "eRRor");
+            model.put("email", email);
+            
+            return "register.html";
+        }
+    }
+    
+    // ------------------------ LOGIN ------------------------
+    @GetMapping("/login")
+    public String login() {
+        return "login.html";
+    }
+
+    
 
     // ------------------------ LIST NEWS ------------------------
     

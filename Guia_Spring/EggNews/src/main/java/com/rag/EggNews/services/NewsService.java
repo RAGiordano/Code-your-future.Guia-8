@@ -48,6 +48,7 @@ public class NewsService {
         return news;
     }
     
+    @Transactional
     public void editNews(Long id, String title, String summary, String body, String picture) {
         News news = new News();
         news = newsRepository.findById(id).orElse(null);
@@ -62,6 +63,7 @@ public class NewsService {
         }
     }
     
+    @Transactional
     public void deleteNews(Long id) {
         newsRepository.deleteById(id);
     }

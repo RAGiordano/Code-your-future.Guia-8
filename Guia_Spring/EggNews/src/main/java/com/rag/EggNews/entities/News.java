@@ -1,23 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.rag.EggNews.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
- * @author Usuario
+ * @author Ricardo A. Giordano
  */
 
 @Entity
-@Table(name = "news")  // Especifica el nombre de la tabla en la base de datos
+@Table(name = "news")  // Name of the database
 public class News {
     //-------------------- Attributes --------------------
     @Id
@@ -25,6 +21,7 @@ public class News {
     private Long id;
     private String title;
     private String summary;
+    @Lob
     private String body;
     private String picture;
     
